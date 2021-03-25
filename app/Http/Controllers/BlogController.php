@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 class BlogController extends Controller
 {
+    public function __construct(Blog $blog)
+    {
+        $this->blog = $blog;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return Blog::all();
+        $blog = Blog::paginate(4);
+        return response()->json($blog);
+        // return Blog::all();
     }
 
     /**

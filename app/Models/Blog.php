@@ -14,7 +14,6 @@ class Blog extends Model
         'data_public'=> 'date:m-d-Y'
     ];
     public function searchBlog($title){
-       
         $data = Blog::where('title', 'like', "%{$title}%")->get();
         return $data;
     }
